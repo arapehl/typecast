@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Typecast 1.4 (release)--The Input Field Augmentation Library</title>
+		
+		<script type="text/javascript" src="../src/typecast_1.4.js"></script>
+		<script type="text/javascript" src="../src/typecast.config.js"></script>
+		<script type="text/javascript">
+			window.onload = go;
+			function go(){
+				Typecast.Init();
+			}
+		</script>
+		<link rel="stylesheet" href="../src/typecast.css" type="text/css">
+		<link rel="stylesheet" href="demo.css" type="text/css">
+	</head>
+	<body>
+        <div id="notice" style="padding: 1em; text-align: center; color: white; font-weight: bold; background: red;">Please note that I am no longer maintaining Typecast.</div>
+		<div id="main">
+			<h1>Typecast 1.4 (release)</h1>
+			<p><strong>The Input Field Augmentation Library</strong></p>
+			<h2 id="demo">Demo</h2>
+			<form id="myform" action="">
+				<fieldset id="config">
+					<legend>Config</legend>
+					<p>Note: the Config panel is here only to allow real time tweaking of the settings and isn't actually part of the library and is therefore not unobtrusive.</p>
+					<fieldset>
+						<legend>Suggest &amp; Auto-Complete Config</legend>
+						<p>
+							<label for="isCaseSensitive">isCaseSensitive</label>
+							<select id="isCaseSensitive" onchange="Typecast.Config.Settings.Suggest.isCaseSensitive = eval(this.options[this.selectedIndex].value);">
+								<option value="true">True</option>
+								<option value="false" selected="selected">False</option>
+							</select>
+						</p>
+						<p>
+							<label for="MatchFromStart">MatchFromStart</label>
+							<select id="MatchFromStart" onchange="Typecast.Config.Settings.Suggest.MatchFromStart = eval(this.options[this.selectedIndex].value);">
+								<option value="true">True</option>
+								<option value="false" selected="selected">False</option>
+							</select><br>("True" triggers Auto-Complete)
+						</p>
+						<p>
+							<label for="ResultLimit">ResultLimit</label>
+							<select id="ResultLimit" onchange="Typecast.Config.Settings.Suggest.ResultLimit = eval(this.options[this.selectedIndex].value);">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+								<option value="13">13</option>
+								<option value="14">14</option>
+								<option value="15" selected="selected">15</option>
+							</select>
+						</p>
+					</fieldset>
+					<fieldset>
+						<legend>Mask</legend>
+						<p>
+							<label for="AllowInsert">AllowInsert</label>
+							<select id="AllowInsert" onchange="Typecast.Config.Settings.Mask.AllowInsert = eval(this.options[this.selectedIndex].value);">
+								<option value="true" selected="selected">True</option>
+								<option value="false">False</option>
+							</select>
+						</p>
+					</fieldset>
+				</fieldset>
+				<fieldset id="typecasttest">
+					<legend>Typecast Test</legend>
+					<fieldset>
+						<legend>Suggest &amp; Auto-Complete</legend>
+						<p>
+							<label for="fname">First Name:</label>
+							<input type="text" id="fname" class="TCSuggest">
+						</p>
+						<p>
+							<label for="lname">Last Name:</label>
+							<input type="text" id="lname" class="TCSuggest">
+						</p>
+						<p>
+							<label for="lname">Country:</label>
+							<input type="text" id="country" class="TCSuggest">
+						</p>
+						<p>
+							<label for="dd">Default Dict.:</label>
+							<input type="text" id="dd" class="TCSuggest">
+						</p>
+					</fieldset>
+					<fieldset>
+						<legend>Realtime Masking</legend>
+						<p>
+							<label for="phone">Phone: </label>
+							<input type="text" id="phone" class="TCMask[(###) ###-####,(___) ___-____]">
+						</p>
+						<p>
+							<label for="fax">Fax: </label>
+							<input type="text" id="fax" class="TCMask">
+						</p>
+						<p>
+							<label for="dob">Date of birth: </label>
+							<input type="text" id="dob" class="TCMask[##/##/####,mm/dd/yyyy]">
+						</p>
+						<p>
+							<label for="ccard">Credit Card: </label>
+							<input type="text" id="ccard" class="TCMask[#### #### #### ####]">
+						</p>
+						<p>
+							<label for="ccard">Credit Card 2: </label>
+							<input type="text" id="ccard" class="TCMask[#### #### #### ####,nnnn-nnnn-nnnn-nnnn]">
+						</p>
+						<p>
+							<label for="postal">Postal Code: </label>
+							<input type="text" id="postal" class="TCMask[A#A #A#]">
+						</p>
+					</fieldset>
+				</fieldset>
+			</form>
+			<p>This demo shows off the Suggest/Auto-Complete and Realtime Masking funcitonalities.</p>
+			<h3>Suggest/Auto-Complete</h3>
+			<p>Typing in the fields below will yield suggestions coming from local dicitonaries that are defined for each field. The third field's dictionary is actually the default dictionary since there isn't an <code>id</code>/dictionary match. Suggest currently supports most standard keypresses (up, down, tab, enter, esc, etc...) as well as the mouse.</p>
+			<h3>Realtime Masking</h3>
+			<p>With realtime masking you're able to apply a mask to the standard HTML input field. You are currently able to limit a character to either numeric(0-9) or alpha(a-z).</p>
+			<!--Creative Commons License-->
+			<a rel="license" href="http://creativecommons.org/licenses/by-nd/2.5/"><img alt="Creative Commons License" style="border: none;" src="somerights20.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nd/2.5/">Creative Commons Licence</a>.
+			<!--/Creative Commons License-->
+			
+			<!--
+			<rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+				<Work rdf:about="">
+					<license rdf:resource="http://creativecommons.org/licenses/by-nd/2.5/" />
+					<dc:title>Typecast</dc:title>
+					<dc:date>2006</dc:date>
+					<dc:description>An input field augmentation library.</dc:description>
+					<dc:creator><Agent><dc:title>Ara Pehlivanian</dc:title></Agent></dc:creator>
+					<dc:rights><Agent><dc:title>Ara Pehlivanian</dc:title></Agent></dc:rights>
+					<dc:type rdf:resource="http://purl.org/dc/dcmitype/InteractiveResource" />
+				</Work>
+				<License rdf:about="http://creativecommons.org/licenses/by-nd/2.5/">
+					<permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+					<permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+					<requires rdf:resource="http://web.resource.org/cc/Notice"/>
+					<requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+				</License>
+			</rdf:RDF>
+			-->
+		</div>
+	
+
+<div id="SuggestOutputArea" style="display: none; position: absolute; "></div>
+</body>
+</html>
